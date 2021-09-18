@@ -2,15 +2,11 @@
 
 This is a modified version of [GuyCarver's ST7735.py](https://github.com/GuyCarver/MicroPython/blob/master/lib/ST7735.py) ST7735 TFT LCD driver for MicroPython.
 
-This version is for micropython-esp32.
+This version is for micropython-esp32. The original github is [here](https://github.com/boochow/MicroPython-ST7735/blob/master/ST7735.py).
 
 A font file is necessary for displaying text (some font files are in [GuyCarver's repo](https://github.com/GuyCarver/MicroPython/tree/master/lib)).
 
-Text nowrap option added(default: nowrap=False).
-
-graphicstest.py is a sample code. I wrote this to make it similar to [Adafruit's graphicstest sketch for Arduino](https://github.com/adafruit/Adafruit-ST7735-Library/tree/master/examples/graphicstest). 
-
-If graphicstest.py doesn't work correctly, try replaceing initr() at line 8 to initg() or initb() or initb2(). You can also change rgb(True) to rgb(False) to switch red and blue pixels if your LCD module shows incorrect colors.
+Text nowrap option added (default: nowrap=False).
 
 Pin connections:
 
@@ -25,8 +21,12 @@ VCC |3V3
 CS  |IO18
 GND |GND
 
-[![YouTube image here](https://img.youtube.com/vi/xIy8DPBZsIk/0.jpg)](https://www.youtube.com/watch?v=xIy8DPBZsIk)
+`tftbmp.py` is another sample similar to [Adafruit's tftbmp sketch for Arduino](https://github.com/adafruit/Adafruit-ST7735-Library/blob/master/examples/spitftbitmap/spitftbitmap.ino). IT IS VERY SLOW. I modified it to save the 2-byte 565 RGB stream to a file, with the .b16 suffix. Once you have that, you can run instead `fastbmp.py`, which is very fast. Change the filename in the code appropriately.
 
-tftbmp.py is another sample similar to [Adafruit's tftbmp sketch for Arduino](https://github.com/adafruit/Adafruit-ST7735-Library/blob/master/examples/spitftbitmap/spitftbitmap.ino).
+I use Thonny to code and place `.bmp` files in the device.
 
-Place bmp file named 'test128x160.bmp' in the file system of MicroPython using file uploading tool such as [ampy](https://github.com/adafruit/ampy), etc.
+![slow](slowbmp.gif)
+
+VS
+
+![fast](fastbmp.gif)
